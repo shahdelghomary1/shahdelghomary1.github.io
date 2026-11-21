@@ -180,7 +180,6 @@ h2 em{font-style:italic;font-weight:500}
 footer{text-align:center;padding:34px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
 
 
-/* ===== v3 extras ===== */
 #loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:clip-path 1s cubic-bezier(.8,0,.2,1)}
 #loader.done{clip-path:inset(0 0 100% 0)}
 #loader .lw{font-family:Fraunces,serif;font-weight:800;font-size:clamp(48px,12vw,110px);display:flex;overflow:hidden}
@@ -225,7 +224,6 @@ h1 .grad{position:relative}
 .to-top svg{position:absolute;inset:-1px;transform:rotate(-90deg)}
 .to-top circle{fill:none;stroke:var(--pink);stroke-width:2;stroke-dasharray:138;stroke-dashoffset:138}
 
-/* ===== v4 extras ===== */
 .star{position:fixed;top:0;left:0;width:140px;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(240,166,200,.6),transparent);pointer-events:none;z-index:-1;opacity:0;transform-origin:left center}
 .star.go{animation:shoot 1.4s ease-out forwards}
 @keyframes shoot{0%{opacity:0;transform:translate(var(--sx),var(--sy)) rotate(150deg) scaleX(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(var(--sx) - 420px),calc(var(--sy) + 240px)) rotate(150deg) scaleX(1)}}
@@ -274,7 +272,6 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,120px);background:linear-gradient(110deg,var(--rose),var(--lilac));color:#1a0716;font-weight:600;padding:12px 20px;border-radius:999px;z-index:97;transition:transform .5s cubic-bezier(.3,1.5,.5,1);font-size:14px;box-shadow:0 14px 30px -10px rgba(255,126,182,.7)}
 .toast.show{transform:translate(-50%,0)}
 
-/* ===== more work ===== */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:-18px 0 34px;position:relative}
 .filters button{position:relative;z-index:1;font:inherit;font-size:14px;font-weight:500;color:var(--muted);background:none;border:1px solid var(--line);padding:9px 16px;border-radius:999px;cursor:pointer;transition:color .3s,border-color .3s}
 .filters button.on{color:#1a0716;border-color:transparent}
@@ -308,7 +305,6 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
 @media(max-width:620px){.works{grid-template-columns:1fr}.work.wide{grid-column:auto}}
 .more-gh{display:flex;justify-content:center;margin-top:34px}
 
-/* ===== project shots ===== */
 .work{padding-top:0}
 .shot{position:relative;display:block;margin:0 -24px 20px;border:0;padding:0;background:#0d040b;cursor:zoom-in;overflow:hidden;border-bottom:1px solid var(--line);aspect-ratio:16/10;width:calc(100% + 48px)}
 .work.wide .shot{aspect-ratio:16/7}
@@ -339,7 +335,6 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
 @media(max-width:620px){.work.wide .shot{aspect-ratio:16/10}}
 #lightbox .x{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);font-size:20px;cursor:pointer}
 
-/* ===== flying things ===== */
 #sky{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
 .tok{position:absolute;font-family:'JetBrains Mono',monospace;font-weight:500;color:rgba(240,166,200,.22);white-space:nowrap;will-change:transform;user-select:none}
 .tok.l{color:rgba(177,140,255,.22)}
@@ -532,7 +527,7 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important;tran
 
 <div class="toast" id="toast"></div>
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Project preview"><button class="x" id="lbx" aria-label="Close preview">✕</button><figure><img id="lbimg" alt=""><figcaption><b id="lbt"></b><a class="gh" id="lbgh" href="#">View code on GitHub</a></figcaption></figure></div>
-<footer>Designed &amp; built for Shahd Elghomary · 2026</footer>
+<footer>© 2026 Shahd Elghomary</footer>
 
 <script>
 let reduce = false; try{reduce=localStorage.getItem('calm')==='1'}catch(e){}
@@ -596,7 +591,6 @@ if(matchMedia('(hover:hover)').matches&&!reduce){
 // copy email
 document.getElementById('copy').addEventListener('click',async e=>{try{await navigator.clipboard.writeText('shahdelgomary@gmail.com');e.target.textContent='Copied ✓'}catch{e.target.textContent='shahdelgomary@gmail.com'}});
 
-// ===== v3 extras =====
 // loader
 addEventListener('load',()=>setTimeout(()=>{const l=document.getElementById('loader');l.classList.add('done');document.body.classList.remove('loading');setTimeout(()=>l.remove(),1100)},reduce?0:1500));
 setTimeout(()=>{const l=document.getElementById('loader');if(l){l.classList.add('done');document.body.classList.remove('loading')}},4000);
@@ -656,7 +650,6 @@ if(matchMedia('(hover:hover)').matches&&!reduce){
 const heroL=document.querySelector('.hero .wrap>div:first-child'),pw=document.querySelector('.photo-wrap');
 if(!reduce)addEventListener('scroll',()=>{const y=scrollY;if(y>innerHeight)return;heroL.style.transform=`translateY(${y*.18}px)`;heroL.style.opacity=1-y/(innerHeight*.9);pw.style.transform=`translateY(${y*.08}px)`},{passive:true});
 
-// ===== v4 extras =====
 // split hero name into letters
 const mix=(a,b,k)=>'#'+[0,2,4].map(i=>Math.round(parseInt(a.substr(i,2),16)*(1-k)+parseInt(b.substr(i,2),16)*k).toString(16).padStart(2,'0')).join('');
 document.querySelectorAll('#name .line > span').forEach(sp=>{const txt=sp.textContent;sp.classList.remove('grad');const n=txt.length;sp.innerHTML=[...txt].map((c,i)=>`<span class="ch" style="--c:${mix('f0a6c8','b18cff',i/(n-1))};--c2:${mix('b18cff','ff7eb6',i/(n-1))};--d:${-i*.25}s">${c}</span>`).join('')});
@@ -690,7 +683,6 @@ let taps=0,tt0=0;document.querySelector('.logo').addEventListener('click',e=>{co
 // ripple on buttons
 document.querySelectorAll('.btn,.copy,.link').forEach(b=>b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),s=document.createElement('span'),d=Math.max(r.width,r.height);s.className='ripple';s.style.width=s.style.height=d+'px';s.style.left=e.clientX-r.left-d/2+'px';s.style.top=e.clientY-r.top-d/2+'px';if(getComputedStyle(b).position==='static')b.style.position='relative';b.appendChild(s);setTimeout(()=>s.remove(),700)}));
 
-// ===== more work: filters with sliding pill + pop-in =====
 const fl=document.getElementById('filters'),pill=document.getElementById('pill'),cardsW=[...document.querySelectorAll('.work')];
 function movePill(b){pill.style.left=b.offsetLeft+'px';pill.style.top=b.offsetTop+'px';pill.style.width=b.offsetWidth+'px';pill.style.height=b.offsetHeight+'px'}
 movePill(fl.querySelector('.on'));addEventListener('resize',()=>movePill(fl.querySelector('.on')));
@@ -705,7 +697,6 @@ if(matchMedia('(hover:hover)').matches&&!reduce)cardsW.forEach(c=>{
 // stagger the reveal of work cards
 cardsW.forEach((c,i)=>c.style.transitionDelay=(i%3)*0.08+'s');
 
-// ===== lightbox for project shots =====
 const lb=document.getElementById('lightbox'),lbimg=document.getElementById('lbimg'),lbt=document.getElementById('lbt'),lbgh=document.getElementById('lbgh');let lastFocus;
 document.querySelectorAll('.shot').forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();const card=s.closest('.work');lastFocus=s;
  lbimg.src=s.dataset.full;lbimg.alt=s.querySelector('img').alt;lbt.textContent=card.querySelector('h3').textContent;lbgh.href=card.querySelector('.gh').href;
@@ -715,7 +706,6 @@ document.getElementById('lbx').addEventListener('click',closeLb);
 lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb()});
 
-// ===== flying things =====
 if(!reduce){
 const sky=document.getElementById('sky'),fly=document.getElementById('flyers');
 const small=innerWidth<700;
