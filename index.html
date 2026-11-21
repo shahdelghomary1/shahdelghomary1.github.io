@@ -368,7 +368,8 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
 .photo-wrap .bubbles .bubble{animation-name:rise2}
 @keyframes rise2{to{transform:translate(var(--bx),-560px);opacity:0}}
 
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}h1 .line>span{transform:none}#loader{display:none}#sky,#flyers,.bubbles{display:none}.lead .w{opacity:1;transform:none;filter:none}.timeline .item{transform:none!important}.skills .chip{opacity:1;transform:none}}
+html.calm *,html.calm *::before,html.calm *::after{animation:none!important;transition:none!important}html.calm .reveal{opacity:1;transform:none}html.calm h1 .line>span{transform:none}html.calm #loader{display:none}html.calm #sky,html.calm #flyers,html.calm .bubbles{display:none}html.calm .lead .w{opacity:1;transform:none;filter:none}html.calm .timeline .item{transform:none!important}html.calm .skills .chip{opacity:1;transform:none}
+.calm-btn{font:inherit;font-size:15px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--pink);cursor:pointer;display:grid;place-items:center;transition:.25s}.calm-btn:hover{border-color:var(--pink)}
 </style>
 </head>
 <body class="loading">
@@ -390,6 +391,7 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="calm-btn" id="calm" aria-label="Pause animations" title="Pause animations">❚❚</button>
 </nav>
 
 <header class="hero" id="top"><canvas id="net"></canvas><div class="wrap">
@@ -535,7 +537,8 @@ h1 .line:nth-child(2) .ch{color:var(--c);animation:hue 4s ease-in-out infinite;a
 <footer>Designed &amp; built for Shahd Elghomary · 2026</footer>
 
 <script>
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let reduce = false; try{reduce=localStorage.getItem('calm')==='1'}catch(e){}
+if(reduce)document.documentElement.classList.add('calm');
 
 // typing
 const words=["Software Engineer","Backend Developer","Node.js · Express · MongoDB","API & integrations builder"];
@@ -767,6 +770,10 @@ function bubble(host,big){const b=document.createElement('span');b.className='bu
 setInterval(()=>{if(!document.hidden)bubble(pb,false)},small?900:600);
 setInterval(()=>{if(!document.hidden)bubble(sky,true)},small?2200:1400);
 }
+
+// pause / play animations
+const cb=document.getElementById('calm');const setBtn=()=>{cb.textContent=reduce?'▶':'❚❚';cb.title=cb.ariaLabel=reduce?'Play animations':'Pause animations'};setBtn();
+cb.addEventListener('click',()=>{try{localStorage.setItem('calm',reduce?'0':'1')}catch(e){}location.reload()});
 </script>
 </body>
 </html>
